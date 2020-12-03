@@ -61,7 +61,7 @@ Ans =>
 
 <?php
   
- function get_maximum_profit($item,$price) {  
+ function get_maximum_profit($item, $price) {  
     $total_no_days = 6;// excluding 1 holiday
     $bread_for_samosa = $item['samosa'] * 2;
     $bread_for_vada = $item['vada'] * 2;
