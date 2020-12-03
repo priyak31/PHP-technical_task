@@ -61,21 +61,34 @@ Ans =>
 
 <?php
   
- function get_maximum_profit($server_load, $no_of_server, $interval) {  
-  for ($i = 1; $i <= $interval; $i++) {
-    if ($server_load[$i] < 50) {
-      if ($i == 5) {
-        $no_of_server_running = $no_of_server/2;
-        break;
-      }
+ function get_maximum_profit($item,$price) {  
+    $total_no_days = 6;// excluding 1 holiday
+    $bread_for_samosa = $item['samosa'] * 2;
+    $bread_for_vada = $item['vada'] * 2;
+    $total_bread_need = $bread_for_samosa + $bread_for_vada;
+    $available_bread=$item['bread'] - $total_bread_need;
+     if ($available_bread < 0) {
+         $total_vadapav = $item['vada'] - 1;
+         $total_samosapav = $item['samosa'];
      }
-      else {
-        $no_of_server_running = 2 * $no_of_server + 1;
-      }
-  }
-  
-  echo $no_of_server_running." (After 5 minute, ".$no_of_server_running." server is running)";
+     else if ($available_bread > 0) {
+          $total_vadapav = $item['vada'];
+          $total_samosapav = $item['samosa'];
+     }else {
+           $total_vadapav = $item['vada'];
+           $total_samosapav = $item['samosa'];
+     }
+   
+   $total_price_vadapav = $total_vadapav * $price['vadapav'];
+   $total_price_samosapav = $total_samosapav * $price['samosapav'];
+   $max_profit = $total_price_vadapav + $total_price_samosapav;
+   
+    echo $max_profit." (Maximum profit possible is Rs.".$max_profit." )";
+   
 }  
 
-
+$item=array("bread"=>"9", "vada"=>"2", "samosa"=>"3");
+$price=array("vadapav"=>"10", "samosapav"=>"15");
+get_maximum_profit($item,$price);
+?>
 
