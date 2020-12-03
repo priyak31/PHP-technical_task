@@ -87,8 +87,9 @@ Ans =>
    
 }  
 
-$item=array("bread"=>"9", "vada"=>"2", "samosa"=>"3");
-$price=array("vadapav"=>"10", "samosapav"=>"15");
+$item = array("bread"=>"9", "vada"=>"2", "samosa"=>"3");
+$price = array("vadapav"=>"10", "samosapav"=>"15");
 get_maximum_profit($item,$price);
+
 ?>
 
